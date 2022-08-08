@@ -1,7 +1,7 @@
 const trim = function(){
     let name = "    prince kumar     "
     name=name.trim()
-    console.log(trim)
+    console.log(name)
 }
 
 const changetoLowerCase = function() {
