@@ -103,5 +103,41 @@ router.get("/films/:filmId", function(req, res){
        res.send("The film id doesn't match any movie")
 })
 
+
+   //sol1  -write an api which gives the missing number in an array of integers starting from 1….e.g [1,2,3,5,6,7] : 4 is missing
+   router.get('/sol1',function(req, res){
+    let arr=[1,2,3,5,6,7]
+    let sum = 0;
+    for (var i in arr) {
+        sum += arr[i]
+    }
+    let n = arr.pop()
+    let sum1 = n*(n+1)/2
+    let missingNumber = sum1 - sum
+
+    res.send(  {  data: missingNumber}  );
+
+});
+
+  // sol2  -write an api which gives the missing number in an array of integers starting from anywhere….e.g [33, 34, 35, 37, 38]: 36 is missing 
+
+router.get("/sol2", function(req,res){
+let arr=[33,34,35,37,38]
+let num = arr.length
+
+let sum = 0;
+for (var i in arr){
+    sum += arr[i];
+
+}
+
+let n = arr[0]
+let n1 = arr.pop()
+let sum2 = (num + 1) * (n + n1)/2 
+let missingNumber = sum2 - sum
+
+res.send( { data: missingNumber } );
+});
+
 module.exports = router;
 // adding this comment for no reason
