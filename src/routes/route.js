@@ -43,15 +43,59 @@ router.post("/players", function (req, res) {
     res.send({ data: players, status: true })
 })
 
+let person = [
+    {
+        name: "pk",
+        age: 10,
+        votingStatus: false
+    },
+    {
+        name: "sk",
+        age: 20,
+        votingStatus: false
+    },
+    {
+        name: "AA",
+        age: 70,
+        votingStatus: false
+    },
+    {
+        name: "sc",
+        age: 5,
+        votingStatus: false
+    },
+    {
+        name: "Ho",
+        age: 40,
+        votingStatus: false
+    }
+]
+
+router.post("/persons", function (req, res) {
+    let votingAge = req.query.votingAge
+    let result = []
+
+    for(i=0;i<person.length;i++){
+        let id = person[i]
+        if(id.age>=votingAge){
+            id.votingStatus=true
+            result.push(id)
+    }
+}
+   
+    return res.send( { data: result , status:true} )
+})
+
+
 // ye sir wala h 
 
 // router.post('/players', function (req, res) {
-    
+
 //     let newPlayer = req.body
 //     let newPlayersName = newPlayer.name
 //     let isNameRepeated = false
 
-    //let player = players.find(p => p.name == newPlayersName)
+//        //let player = players.find(p => p.name == newPlayersName)
 
 //     for(let i = 0; i < players.length; i++) {
 //         if(players[i].name == newPlayersName) {
