@@ -9,13 +9,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb+srv://functionup-cohort:3bMssIUqmBmIqb3e@cluster0.3ccgp0v.mongodb.net/PK-100?retryWrites=true&w=majority"
-, {
-   useNewUrlParser: true 
-}
-).then( () => {console.log( "MongoDb is connected")}  )
-.catch( err => console.log(err))
 
+
+mongoose.connect("mongodb+srv://princekumar2022:ktbaRBP25CkJa0L0@cluster0.kcuyi1y.mongodb.net/pk-22?retryWrites=true&w=majority"
+, {
+    useNewUrlParser: true
+}
+).then(() => {console.log("mongoDb connected");})
+.catch(err => console.log(err))
 
 
 
