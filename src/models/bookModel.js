@@ -5,10 +5,7 @@ const bookSchema = new mongoose.Schema( {
         type: String
 
     },
-    authort: {
-        type: String
-
-    },
+    authorName: [String],
     category: {
         type: String,
         unique: true,
