@@ -25,6 +25,9 @@ router.get("/getBooksData", BookController.getBooksData)
 
 router.get("/getBooksList", BookController.getBooksList)
 
+router.get("/bookrange", BookController.bookrange)
+
+
 //
 router.post("/updateBooks", BookController.updateBooks)
 router.post("/deleteBooks", BookController.deleteBooks)
