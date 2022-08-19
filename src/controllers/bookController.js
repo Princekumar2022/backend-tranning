@@ -30,7 +30,7 @@ const getBooksList = async function (req, res) {
 const updateBooks = async function (req, res) {
     let bookprice= await BookModel.findOneAndUpdate( 
         { name: "Two states"} ,
-        { $set: {price:100} },
+        { $set: {price:100} }, 
         {new: true}     
   );
   let updateprice=bookprice.price;
