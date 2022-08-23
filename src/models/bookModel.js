@@ -15,10 +15,10 @@ const bookSchema = new mongoose.Schema( {
         ref: "LibraryPublisher",
         required: true
     }, 
-    // isHardCover:{
-    //     type: Boolean,
-    //     default: false
-    // },
+    isHardCover:{
+        type: Boolean,
+        default: false
+    },
 
 
 }, { timestamps: true });

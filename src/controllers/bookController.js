@@ -45,7 +45,7 @@ const createBook = async function (req, res) {
     if (authorid3 != publisher)
         return res.send({ msg: "the publisher is not present", condition: false })
 
-        
+
 
     let bookCreated = await bookModel.create(book)
     res.send({ data: bookCreated })
