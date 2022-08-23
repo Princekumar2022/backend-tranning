@@ -6,10 +6,6 @@ const { default: mongoose } = require("mongoose")
 
 
 
-// request body => authorId
-// let authorId = req.body.author
-// authorModel.findById(authorId)
-
 const createBook = async function (req, res) {
 
     // 3 (a) if author id absent
@@ -22,11 +18,10 @@ const createBook = async function (req, res) {
 
     // 3 (b) author if not valid object id
 
-    let author = "6300f31644cd16b96edfe392"
-    let authorid2 = book.author  
-    bookModel.findById(author)
-    if (authorid2 != author)
-        return res.send({ msg: "the author is not present", condition: false })
+    let author = await authorModel.findById(book.author)
+    if(!author) {
+        return res.send({status: false, msg: "Author id is not valid"})
+    }
 
 
     // 3 (c) if publisher id absent
@@ -39,13 +34,11 @@ const createBook = async function (req, res) {
 
     // 3 (d) publisher if not valid object id
 
-    let publisher = "6300f34144cd16b96edfe394"
-    let authorid3 = book.publisher
-    bookModel.findById(publisher)
-    if (authorid3 != publisher)
-        return res.send({ msg: "the publisher is not present", condition: false })
-
-
+    let publisher = await publisherModel.findById(book.publisher)
+    if(!publisher) {
+        return res.send({status: false, msg: "Publisher id is not valid"})
+    }
+ 
 
     let bookCreated = await bookModel.create(book)
     res.send({ data: bookCreated })
@@ -71,15 +64,26 @@ const getBooksWithAuthorAndPublisherDetails = async function (req, res) {
 
 // 5 . using put
 const updateData= async function (req, res) {
-    let data= req.body
-    let allBooks= await publisherModel.updateMany(
-        { name: "Penguin" },
-        // {name: "HarperCollins"},
-        {$set: data},
-        {new: true}
-    )
-    res.send({msg: allBooks})
-}
+
+    //a)
+    // get books by the publioshers - Penguin and HarperCollins
+    let requiredPublishers = 
+    await publisherModel.find({$or: [{name: "Penguin"},{name: "HarperCollins"}]}, {_id: 1})
+    //let books = await bookModel.find().populate('publisher')
+    //for
+    let requiredPublisherIds = [] 
+    for (let i = 0; i < requiredPublishers.length; i++) {
+        requiredPublisherIds.push(requiredPublishers[i]._id)
+    }
+
+    let updatedBooks = await bookModel.updateMany({publisher : {$in: requiredPublisherIds}}, {isHardCover: true}, {new: true})
+    res.send({data: updatedBooks})
+} 
+
+// 5 b)
+
+    
+    
 
 
 
