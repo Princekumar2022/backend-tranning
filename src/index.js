@@ -29,7 +29,7 @@ mongoose.connect("mongodb+srv://princekumar2022:ktbaRBP25CkJa0L0@cluster0.kcuyi1
 
 app.use(
     function (req , res, next){
-        let time = moment().format("yyyy-MM-dd HH:mm:ss ");
+        let time = moment().format("yyyy-MM-DD HH:mm:ss ");
     console.log(time, req.ip);
     next();
     }
