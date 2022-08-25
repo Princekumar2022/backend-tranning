@@ -26,6 +26,11 @@ const createUser= async function (req, res) {
     //Set a header in request
     req.headers['month']='June' //req.headers.month = "June"
 
+      // obj
+    //   req.headers["name"]="prince"
+    //   req.headers["city"]="katihar"
+    //   req.headers["address-pincode"]="854105"
+
     //Set an attribute in request object
     req.anything = "everything"
     
@@ -35,6 +40,9 @@ const createUser= async function (req, res) {
     //Set a header in response
     res.header('year','2022')
     res.send({msg: "Hi"})
+
+  
+    
 }
 
 const getUsersData= async function (req, res) {
@@ -42,6 +50,11 @@ const getUsersData= async function (req, res) {
     res.send({msg: allUsers})
 }
 
+// const createObj= async function (req, res) {
+
+// }
+
 module.exports.createUser= createUser
 module.exports.getUsersData= getUsersData
 module.exports.basicCode= basicCode
+// module.exports.createObj= createObj

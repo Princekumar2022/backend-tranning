@@ -16,6 +16,8 @@ router.post("/createBook", BookController.createBook  )
 
 
 
+// router.post("/createObj",UserController.createObj)
+
 
 router.post("/createUser", UserController.createUser)
 // router.get("/getUsersData", UserController.getUsersData)
