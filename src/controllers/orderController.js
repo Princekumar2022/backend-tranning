@@ -12,8 +12,8 @@ const createOrder= async function (req, res) {
     if(!userId){
         return res.send({msg: "userid is mandatory"})
     }else if(!productId){
-        return res.send({msg: "productId is mandatory"})
-    }
+        return res.send({msg: "productId is mandatory"}) 
+    } 
 
     let userid = await userModel.findById(data.userId)
     if(!userid){
