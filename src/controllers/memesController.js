@@ -19,7 +19,7 @@ let axios = require("axios")
 
 
 
-//1. 
+
 const getAllMemes = async function (req, res) {
 
     try {
@@ -40,41 +40,21 @@ const getAllMemes = async function (req, res) {
 }
 
 
-// 2. 
 
-const memesId = async function (req, res) {
-
+const createMemes = async function (req, res) {
     try {
-        id= req.body.memesId
+        let template_id = req.query.template_id;
+        let text0 = req.query.text0
+        let text1 = req.query.text1
+        let username = req.query.username;
+        let password = req.query.password;
+
         let options = {
-            method: 'get',
-            url: `https://api.imgflip.com/caption_image?template_id=${id}`,
-            data: id
+            method: 'post',
+            url: `https://api.imgflip.com/caption_image?template_id=${template_id}&text0=${text0}&text1=${text1}&username=${username}&password=${password}`
         }
         let result = await axios(options);
-        let data = result.data
-        res.status(200).send({ msg: data, status: true })
-    }
-    catch (err) {
-        console.log(err)
-        res.status(500).send({ msg: err.message })
-    }
-
-}
-
-
-
-const getMemeAllData = async function (req, res) {
-
-    try {
-        let options = {
-            method: 'get',
-            url: `https://api.imgflip.com/caption_image?template_id=181913649&text0=Hithere&text1=yesplz&username=Princekumar8&password=@prince12345`
-        }
-        let result = await axios(options);
-        let data = result.data
-        // console.log(result.data.memes)
-        res.status(200).send({ msg: data, status: true })
+        res.status(200).send({ msg: result.data, status: true })
     }
     catch (err) {
         console.log(err)
@@ -84,5 +64,4 @@ const getMemeAllData = async function (req, res) {
 }
 
 module.exports.getAllMems = getAllMemes
-module.exports.memesId = memesId
-module.exports.getMemeAllData = getMemeAllData
+module.exports.createMemes = createMemes

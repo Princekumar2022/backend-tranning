@@ -15,7 +15,6 @@ router.get("/cowin/states", CowinController.getStates)
 router.get("/cowin/districtsInState/:stateId", CowinController.getDistricts)
 router.get("/cowin/getByPin", CowinController.getByPin)
 router.post("/cowin/getOtp", CowinController.getOtp)
-
 //1.
 router.get("/cowin/getByDistrict", CowinController.getDistrictsById)
 
@@ -26,6 +25,6 @@ router.get("/getSortCities", WeatherController.getSortedCities)
 
 // 3 meemes
 router.get("/getAllMemes",memesController.getAllMems)
-router.post("/MemesId",memesController.memesId)
-router.post("/getMemeAllData",memesController.getMemeAllData)
+router.post("/createMemesData",memesController.createMemes)
+
 module.exports = router;
