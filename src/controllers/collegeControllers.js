@@ -1,7 +1,7 @@
 const collegeModel = require('../models/collegeModel')
 const internModel = require('../models/internModel')
 
-const regEx = /^[a-zA-Z ]*$/;
+const regEx = /^[a-zA-Z -, ]*$/;
 const regExLogoLink =  /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 
 
@@ -59,8 +59,9 @@ const createCollege = async function (req, res) {
 ///////////////////////////////////////////////////////Get College////////////////////////////////////////////////////////
 
 const CollegeDetails=async function(req,res){
+    res.setHeader('Access-Control-Allow-Origin','*')
     try {
-        let collegeName = req.query.collegeName
+        let collegeName = req.query.collegeName 
 
         if (!collegeName || !collegeName.trim()) {
             return res.status(400).send({ status: false, msg: "Invalid request Please provide valid details in Query" });
